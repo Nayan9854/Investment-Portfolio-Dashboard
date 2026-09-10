@@ -15,7 +15,13 @@ async function fetchQuote(symbol: string) {
     `https://query1.finance.yahoo.com/v8/finance/chart/` +
     `${encodeURIComponent(symbol)}`;
 
-  const response = await fetch(url);
+  const response = await fetch(url, {
+  headers: {
+    "User-Agent":
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36",
+    Accept: "application/json,text/plain,*/*",
+  },
+});
 
   if (!response.ok) {
     throw new Error(
